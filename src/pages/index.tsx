@@ -17,11 +17,9 @@ function PostCard(post: any) {
       <time dateTime={post.date} className="block text-sm text-slate-600">
         {format(parseISO(post.date), "LLLL d, yyyy")}
       </time>
-      <h2 className="text-lg">
-        <Link href={post.url}>
-          <a className="text-blue-700 hover:text-blue-900">{post.title}</a>
-        </Link>
-      </h2>
+      <Link href={post.url} className="text-blue-700 hover:text-blue-900">
+        <h2 className="text-lg">{post.title}</h2>
+      </Link>
     </div>
   );
 }
@@ -37,7 +35,7 @@ const Home: NextPage = ({ posts }: any) => {
 
       <h1 className="mb-8 text-3xl font-bold">Contentlayer Blog Example</h1>
 
-      {posts.map((post, idx) => (
+      {posts.map((post: any, idx: number) => (
         <PostCard key={idx} {...post} />
       ))}
     </>
