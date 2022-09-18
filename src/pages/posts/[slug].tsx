@@ -38,9 +38,9 @@ const PostLayout = ({ post }: any) => {
         </div>
         <div className="mb-6 text-center">
           <h1 className="mb-1 text-3xl font-bold">{post.title}</h1>
-          <time dateTime={post.date} className="text-sm text-slate-600">
-            {format(parseISO(post.date), "LLLL d, yyyy")}
-          </time>
+          <span className="text-sm text-slate-600">
+            {format(parseISO(post.date), "MMM dd, yyyy")}
+          </span>
         </div>
         <div
           className="cl-post-body"

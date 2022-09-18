@@ -14,9 +14,9 @@ export async function getStaticProps() {
 function PostCard(post: any) {
   return (
     <div className="mb-6">
-      <time dateTime={post.date} className="block text-sm text-slate-600">
-        {format(parseISO(post.date), "LLLL d, yyyy")}
-      </time>
+      <span className="block text-sm text-slate-600">
+        {format(parseISO(post.date), "MMM dd, yyyy")}
+      </span>
       <Link href={post.url} className="text-blue-700 hover:text-blue-900">
         <h2 className="text-lg">{post.title}</h2>
       </Link>
