@@ -1,0 +1,54 @@
+---
+title: "Improve your imports on NextJS"
+description: "No more imports detailing for each folder you are browsing, your code cleaner, readable and interesting."
+date: "2021-11-20"
+image: ""
+tags:
+  - "nextJS"
+  - "typescript"
+  - "config"
+  - "javascript"
+  - "performance"
+  - "clean-code"
+  - "configurando"
+  - "ambiente"
+---
+
+After a while working with NextJS and studying it I found a way to implement `Imports` in a more dynamic way, leaving the code cleaner.
+
+One thing that bothered me a lot was the fact that I had to write a tripe of imports like: `import * from "../../../../what-want-import"`, in some cases my code was stuck extremely large for something that wasn't needed.
+
+So one fine day in October I was browsing `NextJS Issues` and came across this new [Pull Request](https://github.com/vercel/next.js/pull/11293) that comes with the proposal to add support for `Paths` in `tsconfig.json` and `jsconfig.json` by default.
+
+The cool thing is that with this possibility I could solve my problem that had been afflicting me for a long time. Implemented from version 9.4 of NextJS I would simply need to define a `baseURL` in my config file to support absolute imports.
+
+```json
+// tsconfig.json or jsconfig.json file
+
+{
+  "compilerOptions": {
+    "baseURL": "."
+  }
+}
+
+// Will result in: import Button from 'components/button'
+```
+
+Also I can use a custom prefix, just add a `paths` in the configuration:
+
+```json
+{
+  "compilerOptions": {
+    "baseURL": ".",
+    "paths": {
+      "@components/*": ["components/*"]
+    }
+  }
+}
+
+// It will result in: import Button from '@components/button'
+```
+
+Remember that code editors like VSCode have automatic support for their settings in `jsconfig.json` so just click Command+Click to go straight to the file that was defined there and edit it smoothly. And it's worth noting that [Atom and IntelliJ](https://github.com/tleunen/babel-plugin-module-resolver#editors-autocompletion) also support edits.
+
+I would like to leave as a reference an article by [Paco](https://paco.me/writing/better-nextjs-imports) that inspired me to write this article and share it in a simple way.

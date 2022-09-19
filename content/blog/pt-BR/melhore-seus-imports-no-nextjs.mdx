@@ -1,0 +1,54 @@
+---
+title: "Melhore seus imports no NextJS"
+description: "Chega de imports detalhando por cada pasta que você está navegando, seu código mais limpo, legivel e interessante."
+date: "2021-11-20"
+image: ""
+tags:
+  - "nextJS"
+  - "typescript"
+  - "config"
+  - "javascript"
+  - "performance"
+  - "clean-code"
+  - "configurando"
+  - "ambiente"
+---
+
+Depois de um tempo trabalhando com NextJS e estudando o mesmo encontrei uma forma de implementar `Imports` de uma forma mais dinâmica, deixando o código mais limpo.
+
+Uma coisa que me incomodava muito era o fato de ter que escrever uma tripa de imports como: `import * from "../../../../o-que-quero-importar"`, em alguns casos meu código ficava extremamente grande para algo que não era necessário.
+
+Então em um belo dia de Outubro eu estava navegando pelas `Issues do NextJS` e me deparei com este novo [Pull Request](https://github.com/vercel/next.js/pull/11293) que vem com a proposta de adicionar suporte aos `Paths` no `tsconfig.json` e no `jsconfig.json` por padrão.
+
+O bacana é que com essa possibilidade eu poderia resolver meu problema que me afligia a muito tempo. Implementado a partir da versão 9.4 do NextJS eu simplesmente precisaria definir um `baseURL` no meu arquivo de configuração para ter suporte a importações absolutas.
+
+```json
+// Arquivo tsconfig.json ou jsconfig.json
+
+{
+  "compilerOptions": {
+    "baseURL": "."
+  }
+}
+
+// Vai me resultar em: import Button from 'components/button'
+```
+
+Além disso posso utilizar um prefixo customizado, basta adicionar um `paths` na configuração:
+
+```json
+{
+  "compilerOptions": {
+    "baseURL": ".",
+    "paths": {
+      "@components/*": ["components/*"]
+    }
+  }
+}
+
+// Vai me resultar em: import Button from '@components/button'
+```
+
+Vale lembrar que editores de código como VSCode tem suporte automático a suas configurações no `jsconfig.json` então basta clicar Command+Click para ir direto ao arquivo que ali foi definido e edita-lo tranquilamente. E vale apontar que [Atom e IntelliJ](https://github.com/tleunen/babel-plugin-module-resolver#editors-autocompletion) também tem suporte para edições.
+
+Gostaria de deixar como referencia um artigo do [Paco](https://paco.me/writing/better-nextjs-imports) que me inspirou em escrever este artigo e compartilhar de uma forma simples.

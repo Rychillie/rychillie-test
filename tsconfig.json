@@ -16,7 +16,10 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "contentlayer/generated": ["./.contentlayer/generated"],
+      "@components/*": ["./src/components/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@lib/*": ["./src/lib/*"]
     }
   },
   "include": [

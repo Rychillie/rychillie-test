@@ -1,30 +1,29 @@
-import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { compareDesc, format, parseISO } from "date-fns";
-import { allPosts } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
+import {
+  allBlogEnUs,
+  allBlogPtBRs,
+  allNewsletters,
+} from "contentlayer/generated";
+import { useRouter } from "next/router";
+import { DatePost } from "@lib/utils";
 
-export async function getStaticProps() {
-  const posts = allPosts.sort((a, b) => {
-    return compareDesc(new Date(a.date), new Date(b.date));
-  });
+export function getStaticProps({ locale }: { locale: string }) {
+  const postLang = locale === "pt-BR" ? allBlogPtBRs : allBlogEnUs;
+  const posts = postLang
+    .sort((a, b) => {
+      return compareDesc(new Date(a.date), new Date(b.date));
+    })
+    .slice(0, 4);
+
   return { props: { posts } };
 }
 
-function PostCard(post: any) {
-  return (
-    <div className="mb-6">
-      <span className="block text-sm text-slate-600">
-        {format(parseISO(post.date), "MMM dd, yyyy")}
-      </span>
-      <Link href={post.url} className="text-blue-700 hover:text-blue-900">
-        <h2 className="text-lg">{post.title}</h2>
-      </Link>
-    </div>
-  );
-}
+const Home = ({ posts }: any) => {
+  const router = useRouter();
+  const { locale } = router;
 
-const Home: NextPage = ({ posts }: any) => {
   return (
     <>
       <Head>
@@ -33,10 +32,15 @@ const Home: NextPage = ({ posts }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="mb-8 text-3xl font-bold">Contentlayer Blog Example</h1>
+      <h1>{locale === "pt-BR" ? "Olá Mundo" : "Hello World"}</h1>
 
-      {posts.map((post: any, idx: number) => (
-        <PostCard key={idx} {...post} />
+      {posts.map((post: any, index: any) => (
+        <Link key={index} href={`blog/${post.slug}`} locale={locale as string}>
+          <>
+            <h3>{post.title}</h3>
+            <span>{DatePost(post.date, locale as string)}</span>
+          </>
+        </Link>
       ))}
     </>
   );

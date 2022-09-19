@@ -1,0 +1,56 @@
+---
+title: "Como usar SASS/SCSS no NextJS"
+description: "Um mini-tutorial super simples, ensinando como configurar SASS/SCSS no NextJS"
+date: "2021-11-08"
+image: ""
+tags:
+  - "nextJS"
+  - "sass"
+  - "scss"
+  - "css"
+  - "styles"
+  - "configurando"
+  - "ambiente"
+---
+
+Nos ultimos meses eu venho trabalhando com SCSS em diversos tipos de projetos, e como eu tenho cada vez mais me interessado pelo NextJS, e eu gostaria de integra-lo. Por isso venho através deste super simples mini-tutorial explicar como eu realizo tal atividade.
+
+Já com nosso projeto iniciado vamos começar instalando alguns pacotes, neste exemplo estarei usando o `yarn` como meu _Package Manager_, porem, fique a vontade em usar com `npm` caso prefira.
+
+Para começar vamos instalar o pacote do Sass usando um destes dois comandos:
+
+```bash
+yarn add sass
+ou
+yarn add node-sass
+```
+
+Logo após vamos instalar o Plugin do Next. Para quem não esta familiarizado os Plugins do Next, basicamente eles adicionam funcionalidades sem necessidade de configuração extra.
+
+Para instalar o Plugin do SASS/SCSS criado pelo time do Next vamos usar o seguinte comando no terminal do projeto:
+
+```bash
+yarn add @zeit/next-sass
+```
+
+Agora vamos definir o padrão do SASS/SCSS no nosso projeto, fazendo algumas alterações no arquivo `next.config.js`, caso seu projeto não tenha este arquivo, basta criar com este mesmo nome. Então vamos colocar neste arquivo a seguinte configuração:
+
+```js
+const path = require("path");
+const withSass = require("@zeit/next-sass");
+
+module.exports = withSass({
+  cssModules: true,
+});
+
+module.exports = {
+  /* Adicione sua pasta padrão de SCSS aqui! */
+  sassOptions: {
+    includePaths: [path.join(__dirname, "styles")],
+  },
+};
+```
+
+Agora você pode começar a criar e usar arquivos SCSS/SASS que os mesmos funcionaram perfeitamente.
+
+Lembre-se de sempre importar seus arquivos com a extensão `.scss` ao invés de `.css`.

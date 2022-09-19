@@ -1,17 +1,19 @@
-/** @type {import('next').NextConfig} */
 const { withContentlayer } = require("next-contentlayer");
 
-const nextConfig = {
-  reactStrictMode: false,
+/**
+ * @type {import('next').NextConfig}
+ */
+module.exports = withContentlayer({
   swcMinify: true,
-  experimental: {
-    newNextLinkBehavior: true,
-  },
+  reactStrictMode: true,
   i18n: {
     localeDetection: true,
     locales: ["en-US", "pt-BR"],
     defaultLocale: "en-US",
   },
-};
-
-module.exports = withContentlayer({ nextConfig });
+  experimental: {
+    legacyBrowsers: false,
+    browsersListForSwc: true,
+    newNextLinkBehavior: true,
+  },
+});
