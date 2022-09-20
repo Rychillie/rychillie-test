@@ -1,0 +1,13 @@
+#__next {
+  height: fit-content;
+  min-height: -webkit-fill-available;
+}
+
+@media (min-width: 640px) {
+  #__next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
