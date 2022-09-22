@@ -178,10 +178,10 @@ export default function CommandBar({ children, locale }: BaseAction) {
   return (
     <KBarProvider actions={actions as any}>
       <KBarPortal>
-        <KBarPositioner className="fixed flex items-start justify-center w-full inset-0 pt-96 py-4 pb-4 bg-neutral-900/80 box-border z-50">
-          <KBarAnimator className="max-w-2xl w-full bg-neutral-700/20 text-neutral-400 transition-all backdrop-blur-lg rounded-lg overflow-hidden">
+        <KBarPositioner className="fixed flex items-start justify-center w-full inset-0 pt-96 py-4 pb-4 bg-neutral-900/90 dark:bg-neutral-900/80 box-border z-50">
+          <KBarAnimator className="max-w-2xl w-full bg-neutral-800 dark:bg-neutral-700/20 text-neutral-400 transition-all backdrop-blur-lg rounded-lg overflow-hidden">
             <KBarSearch
-              className="py-8 px-6 w-full bg-neutral-900/10 box-border text-base outline-none border-none text-neutral-300 placeholder:text-neutral-400"
+              className="py-8 px-6 w-full bg-neutral-800 dark:bg-neutral-900/10 box-border text-base outline-none border-none text-neutral-300 placeholder:text-neutral-400"
               defaultPlaceholder={
                 componentLocale === "pt-BR"
                   ? "Digite um comando ou pesquise…"
@@ -228,14 +228,14 @@ function RstItem({ action, active }: Props, ref: React.Ref<HTMLDivElement>) {
       ref={ref}
       className={cn(
         active
-          ? "bg-neutral-800/20 text-neutral-300"
-          : "bg-neutral-900/20 text-neutral-400",
+          ? "bg-neutral-800 text-neutral-300"
+          : "bg-neutral-900/10 text-neutral-400",
         "py-3 px-4 flex items-center justify-between cursor-pointer h-14 m-0"
       )}
     >
       <div className="flex gap-2 items-center">
         {action.icon && (
-          <span className="flex p-px h-6 w-6 rounded align-middle self-center justify-center items-center">
+          <span className="flex p-px h-5 w-5 rounded align-middle self-center justify-center items-center">
             {action.icon}
           </span>
         )}
@@ -248,7 +248,7 @@ function RstItem({ action, active }: Props, ref: React.Ref<HTMLDivElement>) {
           {action.shortcut.map((shortcut: any) => (
             <kbd
               key={shortcut}
-              className="py-1 px-2 uppercase bg-neutral-800/20 rounded"
+              className="py-1 px-2 uppercase bg-neutral-700/40 rounded"
             >
               {shortcut}
             </kbd>
