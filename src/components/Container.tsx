@@ -10,7 +10,7 @@ export default function Container({ children, isLarge }: ContainerProps) {
     <>
       <div
         className={cn(
-          isLarge ? "px-0" : " px-6 md:px-12",
+          isLarge ? "px-0 md:px-4 lg:px-0" : "px-6 md:px-12",
           "mx-auto md:max-w-4xl"
         )}
       >

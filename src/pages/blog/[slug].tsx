@@ -3,9 +3,9 @@ import {
   allBlogPtBRs,
   allDocuments,
 } from "contentlayer/generated";
-import Link from "next/link";
 import type { BlogEnUS, BlogPtBR } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import LayoutBase from "@layouts/PostLayout";
 
 type Params = {
   params: {
@@ -74,14 +74,8 @@ export default function BlogPost({ post }: { post: BlogEnUS | BlogPtBR }) {
   const Component = useMDXComponent(post.body.code);
 
   return (
-    <div>
-      <Link href="/" locale={locale}>
-        {locale === "pt-BR" ? "Página inicial" : "Homepage"}
-      </Link>
-
-      <h1>{post.title}</h1>
-
-      <article>
+    <LayoutBase title={post.title} locale={locale} thumb={post.image}>
+      <article className="font-normal text-lg text-neutral-600 dark:text-neutral-400 flex flex-col gap-4">
         <Component
           components={
             {
@@ -90,6 +84,6 @@ export default function BlogPost({ post }: { post: BlogEnUS | BlogPtBR }) {
           }
         />
       </article>
-    </div>
+    </LayoutBase>
   );
 }
