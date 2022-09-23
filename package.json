@@ -9,25 +9,36 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.11",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@tailwindcss/typography": "^0.5.7",
+    "classnames": "^2.3.2",
     "contentlayer": "^0.2.8",
     "date-fns": "^2.29.3",
+    "kbar": "^0.1.0-beta.36",
     "next": "12.3.0",
     "next-contentlayer": "^0.2.8",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "reading-time": "^1.5.0",
-    "rehype-autolink-headings": "^6.1.1",
-    "rehype-code-titles": "^1.1.0",
-    "rehype-prism-plus": "^1.5.0",
-    "rehype-slug": "^5.0.1",
-    "remark-gfm": "^3.0.1"
+    "tailwindcss": "^3.1.8"
   },
   "devDependencies": {
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",
+    "autoprefixer": "^10.4.12",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.0",
+    "postcss": "^8.4.16",
+    "reading-time": "^1.5.0",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-code-titles": "^1.1.0",
+    "rehype-prism-plus": "^1.5.0",
+    "rehype-slug": "^5.0.1",
+    "remark-gfm": "^3.0.1",
     "typescript": "4.8.3"
   }
 }
