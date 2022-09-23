@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Navbar from "@components/Navbar";
 import Container from "@components/Container";
+import Newsletter from "@components/Newsletter";
 import Footer from "@components/Footer";
 
 type LayoutBaseProps = {
@@ -44,6 +45,7 @@ export default function LayoutBase({
         <Container>{children}</Container>
       </main>
 
+      <Newsletter locale={locale} />
       <Footer locale={locale} />
     </>
   );

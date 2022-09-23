@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Container from "@components/Container";
 
-type NavBarProps = {
+type FooterProps = {
   locale?: string;
 };
 
-export default function Footer({ locale }: NavBarProps) {
+export default function Footer({ locale }: FooterProps) {
   return (
     <footer>
       <Container>
