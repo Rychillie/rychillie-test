@@ -61,7 +61,7 @@ export default function CommandBar({ children, locale }: BaseAction) {
       keywords: componentLocale === "pt-BR" ? "copiar-url" : "copy-url",
       section: "Geral",
       perform: () => navigator.clipboard.writeText(window.location.href),
-      icon: <ClipboardIcon color="#f2f2f2" />,
+      icon: <ClipboardIcon className="flex h-5 w-5" />,
     },
     {
       id: "email",
@@ -70,7 +70,7 @@ export default function CommandBar({ children, locale }: BaseAction) {
       keywords: componentLocale === "pt-BR" ? "enviar-email" : "send-email",
       section: "Geral",
       perform: () => window.open("mailto:contact@rychillie.net", "_blank"),
-      icon: <EnvelopeIcon color="#f2f2f2" />,
+      icon: <EnvelopeIcon className="flex h-5 w-5" />,
     },
     {
       id: "theme",
@@ -81,9 +81,9 @@ export default function CommandBar({ children, locale }: BaseAction) {
       perform: () => setTheme(resolvedTheme === "dark" ? "light" : "dark"),
       icon:
         resolvedTheme === "dark" ? (
-          <SunIcon color="#f2f2f2" />
+          <SunIcon className="flex h-5 w-5" />
         ) : (
-          <MoonIcon color="#f2f2f2" />
+          <MoonIcon className="flex h-5 w-5" />
         ),
     },
     {
@@ -93,7 +93,7 @@ export default function CommandBar({ children, locale }: BaseAction) {
       keywords: componentLocale === "pt-BR" ? "ir-inicio" : "go-home",
       section: componentLocale === "pt-BR" ? "Ir Para" : "Go To",
       perform: () => router.push(componentLocale === "pt-BR" ? "/pt-BR/" : "/"),
-      icon: <HomeIcon color="#f2f2f2" />,
+      icon: <HomeIcon className="flex h-5 w-5" />,
     },
     {
       id: "about",
@@ -103,7 +103,7 @@ export default function CommandBar({ children, locale }: BaseAction) {
       section: componentLocale === "pt-BR" ? "Ir Para" : "Go To",
       perform: () =>
         router.push(componentLocale === "pt-BR" ? "/pt-BR/about" : "/about"),
-      icon: <UserIcon color="#f2f2f2" />,
+      icon: <UserIcon className="flex h-5 w-5" />,
     },
     {
       id: "articles",
@@ -113,7 +113,7 @@ export default function CommandBar({ children, locale }: BaseAction) {
       section: componentLocale === "pt-BR" ? "Ir Para" : "Go To",
       perform: () =>
         router.push(componentLocale === "pt-BR" ? "/pt-BR/blog" : "/blog"),
-      icon: <PencilIcon color="#f2f2f2" />,
+      icon: <PencilIcon className="flex h-5 w-5" />,
     },
     {
       id: "uses",
@@ -122,7 +122,7 @@ export default function CommandBar({ children, locale }: BaseAction) {
       keywords: componentLocale === "pt-BR" ? "ir-uses" : "go-uses",
       section: componentLocale === "pt-BR" ? "Ir Para" : "Go To",
       perform: () => router.push("/uses"),
-      icon: <ComputerDesktopIcon color="#f2f2f2" />,
+      icon: <ComputerDesktopIcon className="flex h-5 w-5" />,
     },
     {
       id: "github",
@@ -175,27 +175,29 @@ export default function CommandBar({ children, locale }: BaseAction) {
     },
   ];
 
-  return (
-    <KBarProvider actions={actions as any}>
-      <KBarPortal>
-        <KBarPositioner className="fixed flex items-start justify-center w-full inset-0 pt-96 py-4 pb-4 bg-neutral-900/90 dark:bg-neutral-900/80 box-border z-50">
-          <KBarAnimator className="max-w-2xl w-full bg-neutral-800 dark:bg-neutral-700/20 text-neutral-400 transition-all backdrop-blur-lg rounded-lg overflow-hidden">
-            <KBarSearch
-              className="py-8 px-6 w-full bg-neutral-800 dark:bg-neutral-900/10 box-border text-base outline-none border-none text-neutral-300 placeholder:text-neutral-400"
-              defaultPlaceholder={
-                componentLocale === "pt-BR"
-                  ? "Digite um comando ou pesquise…"
-                  : "Type a command or search…"
-              }
-            />
-            <RenderResults />
-          </KBarAnimator>
-        </KBarPositioner>
-      </KBarPortal>
+  if (mounted) {
+    return (
+      <KBarProvider actions={actions as any}>
+        <KBarPortal>
+          <KBarPositioner className="fixed flex items-start justify-center w-full inset-0 pt-96 py-4 pb-4 bg-neutral-900/90 dark:bg-neutral-900/80 box-border z-50">
+            <KBarAnimator className="max-w-2xl w-full bg-neutral-800 dark:bg-neutral-700/20 text-neutral-400 transition-all backdrop-blur-lg rounded-lg overflow-hidden">
+              <KBarSearch
+                className="py-8 px-6 w-full bg-neutral-800 dark:bg-neutral-900/10 box-border text-base outline-none border-none text-neutral-300 placeholder:text-neutral-400"
+                defaultPlaceholder={
+                  componentLocale === "pt-BR"
+                    ? "Digite um comando ou pesquise…"
+                    : "Type a command or search…"
+                }
+              />
+              <RenderResults />
+            </KBarAnimator>
+          </KBarPositioner>
+        </KBarPortal>
 
-      {children}
-    </KBarProvider>
-  );
+        {children}
+      </KBarProvider>
+    );
+  }
 }
 
 function RenderResults() {
@@ -236,7 +238,7 @@ function RstItem({ action, active }: Props, ref: React.Ref<HTMLDivElement>) {
       <div className="flex gap-2 items-center">
         {action.icon && (
           <span className="flex p-px h-5 w-5 rounded align-middle self-center justify-center items-center">
-            {action.icon}
+            {action.icon as any}
           </span>
         )}
         <div className="flex flex-col">
