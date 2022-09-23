@@ -1,5 +1,6 @@
 import Navbar from "@components/Navbar";
 import Container from "@components/Container";
+import Footer from "@components/Footer";
 
 type LayoutBaseProps = {
   children: React.ReactNode;
@@ -14,6 +15,8 @@ export default function LayoutBase({ children, locale }: LayoutBaseProps) {
       <main>
         <Container>{children}</Container>
       </main>
+
+      <Footer locale={locale} />
     </>
   );
 }

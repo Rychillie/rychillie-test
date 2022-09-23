@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Navbar from "@components/Navbar";
 import Container from "@components/Container";
-import Image from "next/image";
+import Footer from "@components/Footer";
 
 type LayoutBaseProps = {
   children: React.ReactNode;
@@ -42,6 +43,8 @@ export default function LayoutBase({
       <main className="py-6 md:py-12">
         <Container>{children}</Container>
       </main>
+
+      <Footer locale={locale} />
     </>
   );
 }
