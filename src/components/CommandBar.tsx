@@ -175,29 +175,27 @@ export default function CommandBar({ children, locale }: BaseAction) {
     },
   ];
 
-  if (mounted) {
-    return (
-      <KBarProvider actions={actions as any}>
-        <KBarPortal>
-          <KBarPositioner className="fixed flex items-start justify-center w-full inset-0 pt-96 py-4 pb-4 bg-neutral-900/90 dark:bg-neutral-900/80 box-border z-50">
-            <KBarAnimator className="max-w-2xl w-full bg-neutral-800 dark:bg-neutral-700/20 text-neutral-400 transition-all backdrop-blur-lg rounded-lg overflow-hidden">
-              <KBarSearch
-                className="py-8 px-6 w-full bg-neutral-800 dark:bg-neutral-900/10 box-border text-base outline-none border-none text-neutral-300 placeholder:text-neutral-400"
-                defaultPlaceholder={
-                  componentLocale === "pt-BR"
-                    ? "Digite um comando ou pesquise…"
-                    : "Type a command or search…"
-                }
-              />
-              <RenderResults />
-            </KBarAnimator>
-          </KBarPositioner>
-        </KBarPortal>
+  return (
+    <KBarProvider actions={actions as any}>
+      <KBarPortal>
+        <KBarPositioner className="fixed flex items-start justify-center w-full inset-0 pt-96 py-4 pb-4 bg-neutral-900/90 dark:bg-neutral-900/80 box-border z-50">
+          <KBarAnimator className="max-w-2xl w-full bg-neutral-800 dark:bg-neutral-700/20 text-neutral-400 transition-all backdrop-blur-lg rounded-lg overflow-hidden">
+            <KBarSearch
+              className="py-8 px-6 w-full bg-neutral-800 dark:bg-neutral-900/10 box-border text-base outline-none border-none text-neutral-300 placeholder:text-neutral-400"
+              defaultPlaceholder={
+                componentLocale === "pt-BR"
+                  ? "Digite um comando ou pesquise…"
+                  : "Type a command or search…"
+              }
+            />
+            <RenderResults />
+          </KBarAnimator>
+        </KBarPositioner>
+      </KBarPortal>
 
-        {children}
-      </KBarProvider>
-    );
-  }
+      {children}
+    </KBarProvider>
+  );
 }
 
 function RenderResults() {
