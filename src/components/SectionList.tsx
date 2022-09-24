@@ -23,14 +23,19 @@ export default function SectionList({
         {title}
       </h2>
 
-      <div className={cn(isGrid ? "" : "flex-col", "flex gap-2 md:gap-6")}>
+      <div
+        className={cn(
+          isGrid && "md:grid md:grid-cols-2",
+          "flex flex-col gap-2 md:gap-6"
+        )}
+      >
         {children}
       </div>
 
       <Link
         href={link}
         locale={locale}
-        className="flex flex-row items-center justify-start w-auto text-sm font-medium gap-1 hover:gap-2 transition-all"
+        className="flex flex-row items-center justify-start w-auto text-sm font-medium gap-1 hover:gap-2 transition-all text-neutral-500 dark:text-neutral-400"
       >
         {locale === "pt-BR" ? "Ver mais" : "View more"}
         <ArrowRightIcon className="w-4 h-4" />
