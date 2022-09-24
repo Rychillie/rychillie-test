@@ -18,7 +18,7 @@ export default function SectionList({
   link,
 }: SectionListProps) {
   return (
-    <section className="flex flex-col py-10 md:py-20 gap-4 md:gap-8">
+    <section className="flex flex-col py-10 md:py-20 gap-6">
       <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-50">
         {title}
       </h2>
@@ -26,7 +26,7 @@ export default function SectionList({
       <div
         className={cn(
           isGrid && "md:grid md:grid-cols-2",
-          "flex flex-col gap-2 md:gap-6"
+          "flex flex-col gap-4"
         )}
       >
         {children}
