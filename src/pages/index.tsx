@@ -1,12 +1,9 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { compareDesc } from "date-fns";
-import {
-  allBlogEnUs,
-  allBlogPtBRs,
-} from "contentlayer/generated";
+import { allBlogEnUs, allBlogPtBRs } from "contentlayer/generated";
 import SectionList from "@components/SectionList";
+import ItemPost from "@components/ItemPost";
 import { DatePost } from "@lib/utils";
 import LayoutBase from "@layouts/BaseLayout";
 
@@ -39,21 +36,14 @@ const Home = ({ posts }: any) => {
         link="/blog"
       >
         {posts.map((post: any, index: any) => (
-          <Link
+          <ItemPost
             key={index}
-            href={`blog/${post.slug}`}
+            slug={`blog/${post.slug}`}
             locale={locale as string}
-            className="hover:opacity-60 transition-opacity"
-          >
-            <>
-              <h3 className="text-neutral-900 dark:text-neutral-300">
-                {post.title}
-              </h3>
-              <span className="text-neutral-800 dark:text-neutral-400">
-                {DatePost(post.date, locale as string)}
-              </span>
-            </>
-          </Link>
+            title={post.title}
+            description={post.description}
+            extra={DatePost(post.date, locale as string)}
+          />
         ))}
       </SectionList>
     </LayoutBase>
