@@ -19,7 +19,7 @@ export default function ItemPost({
     <Link
       href={slug}
       locale={locale}
-      className="hover:opacity-60 transition-opacity flex flex-col gap-2"
+      className="hover:opacity-60 transition-opacity flex flex-col gap-1.5 md:gap-0.5"
     >
       <h3 className="text-base font-medium text-neutral-800 dark:text-neutral-100">
         {title}
