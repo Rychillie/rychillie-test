@@ -54,7 +54,7 @@ function MobileMenu({ locale }: { locale: string }) {
         <ul
           className={cn(
             styles.menu,
-            "flex flex-col absolute inset-y-24 inset-x-6 bg-neutral-100 dark:bg-neutral-900",
+            "flex flex-col absolute inset-y-24 inset-x-0 px-6 bg-white dark:bg-neutral-900",
             isMenuRendered && styles.menuRendered
           )}
         >
