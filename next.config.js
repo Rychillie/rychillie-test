@@ -4,6 +4,7 @@ const { withContentlayer } = require("next-contentlayer");
  * @type {import('next').NextConfig}
  */
 module.exports = withContentlayer({
+  reactStrictMode: false,
   swcMinify: true,
   reactStrictMode: true,
   i18n: {
