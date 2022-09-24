@@ -5,8 +5,8 @@ import { compareDesc } from "date-fns";
 import {
   allBlogEnUs,
   allBlogPtBRs,
-  allNewsletters,
 } from "contentlayer/generated";
+import SectionList from "@components/SectionList";
 import { DatePost } from "@lib/utils";
 import LayoutBase from "@layouts/BaseLayout";
 
@@ -33,7 +33,11 @@ const Home = ({ posts }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="py-6 md:py-12">
+      <SectionList
+        title={locale === "pt-BR" ? "Artigos" : "Writting"}
+        locale={locale === "pt-BR" ? "pt-BR" : "en-US"}
+        link="/blog"
+      >
         {posts.map((post: any, index: any) => (
           <Link
             key={index}
@@ -51,7 +55,7 @@ const Home = ({ posts }: any) => {
             </>
           </Link>
         ))}
-      </div>
+      </SectionList>
     </LayoutBase>
   );
 };
