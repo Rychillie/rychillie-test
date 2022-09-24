@@ -7,17 +7,17 @@ export default function Apresentation({ locale }: { locale?: string }) {
     <header>
       <Container>
         <div className="flex flex-col md:flex-row py-14 gap-6 md:gap-12 md:py-28">
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full w-full overflow-hidden">
+          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
             <Image
               src="/rychillie-pencil.jpg"
               alt="Rychillie holding an Apple Pencil"
               width={160}
               height={160}
               layout="responsive"
-              className="flex w-32 h-32 md:w-40 md:h-40 w-full"
+              className="flex w-32 h-32 md:w-40 md:h-40"
             />
           </div>
-          <div className="flex flex-col gap-4 gap-6 flex-1">
+          <div className="flex flex-col gap-4 md:gap-6 flex-1">
             <h1 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-neutral-50">
               {locale === "pt-BR" ? `Olá — Eu sou ` : "Hello — I'm "}Rychillie
               <span className="text-fuchsia-500 dark:text-fuchsia-400">.</span>
