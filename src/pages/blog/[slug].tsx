@@ -6,6 +6,7 @@ import {
 import type { BlogEnUS, BlogPtBR } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import LayoutBase from "@layouts/PostLayout";
+import { DatePost, timeToRead } from "@lib/utils";
 
 type Params = {
   params: {
@@ -70,11 +71,28 @@ function VideoWithTheme(
 }
 
 export default function BlogPost({ post }: { post: BlogEnUS | BlogPtBR }) {
+  const baseURL =
+    "https://rychillie-net-git-feat-og-image-rychillie.vercel.app";
   const locale = post?.type === "BlogPtBR" ? "pt-BR" : "en-US";
   const Component = useMDXComponent(post.body.code);
 
+  const postSlug =
+    locale === "pt-BR"
+      ? `${baseURL}/pt-BR/blog/${post.slug}`
+      : `${baseURL}/blog/${post.slug}`;
+
   return (
-    <LayoutBase title={post.title} locale={locale} thumb={post.image}>
+    <LayoutBase
+      title={post.title}
+      description={post.description}
+      locale={locale}
+      thumb={post.image}
+      postSlug={postSlug}
+      extra={`${DatePost(post.date, locale as string)} • ${timeToRead(
+        post.readingTime.text,
+        locale as string
+      )}`}
+    >
       <article className="font-normal text-lg text-neutral-600 dark:text-neutral-400 flex flex-col gap-4">
         <Component
           components={

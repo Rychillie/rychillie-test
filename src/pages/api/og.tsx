@@ -8,23 +8,9 @@ export const config = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { searchParams } = new URL(req.url!);
-  const title = searchParams.get("title");
-  const top = searchParams.get("top");
 
-  const lg = {
-    fontSize: "72px",
-    lineHeight: "80px",
-    fontWeight: 800,
-    fontFamily: "Inter",
-    color: "#cabdff",
-  };
-  const md = {
-    fontSize: "62px",
-    lineHeight: "70px",
-    fontWeight: 900,
-    fontFamily: "Inter",
-    color: "#cabdff",
-  };
+  const title = searchParams.get("title") || "Rychillie";
+  const subTitle = searchParams.get("subtitle") || "rychillie.net";
 
   return new ImageResponse(
     (
@@ -43,53 +29,68 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "start",
-            justifyContent: "space-between",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
             width: "1200px",
             height: "630px",
             padding: "80px",
           }}
         >
-          <p
+          <img
+            src="http://rychillie-net-git-feat-og-image-rychillie.vercel.app/rychillie-pencil.jpg"
+            alt="Rychillie's avatar"
+            width={160}
+            height={160}
             style={{
-              fontFamily: "Inter",
-              fontSize: "28px",
-              marginBottom: "25px",
-              color: "#c4c4c4",
+              borderRadius: "200px",
+              margin: "0 auto 16px",
             }}
-          >
-            {top}
-          </p>
+          />
 
-          <h1 style={title!.length < 60 ? lg : md}>{title}</h1>
-
-          <div
+          <span
             style={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              width: "100%",
+              fontSize: "28px",
+              lineHeight: "28px",
+              fontWeight: 900,
+              color: "#fafafa",
+              width: "auto",
+              textAlign: "center",
+              margin: "0 auto 16px",
             }}
           >
-            <p
-              style={{
-                fontFamily: "Inter",
-                fontSize: "28px",
-                color: "#c4c4c4",
-              }}
-            >
-              rychillie.net
-            </p>
-            <img
-              src="http://localhost:3000/rychillie-pencil.jpg"
-              alt="Rychillie's avatar"
-              width={70}
-              height={70}
-              style={{
-                borderRadius: "100px",
-              }}
-            />
-          </div>
+            {title}
+          </span>
+
+          <h1
+            style={{
+              display: "flex",
+              fontSize: "64px",
+              lineHeight: "64px",
+              fontWeight: 900,
+              color: "#e879f9",
+              width: "auto",
+              maxWidth: "640px",
+              textAlign: "center",
+              margin: "0 auto 24px",
+            }}
+          >
+            {subTitle}
+          </h1>
+          <h2
+            style={{
+              display: "flex",
+              fontSize: "24px",
+              lineHeight: "24px",
+              color: "#fafafa",
+              width: "auto",
+              textAlign: "center",
+              margin: "0 auto",
+            }}
+          >
+            rychillie.net
+          </h2>
         </div>
       </div>
     )

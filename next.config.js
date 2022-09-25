@@ -8,7 +8,10 @@ module.exports = withContentlayer({
   swcMinify: true,
   reactStrictMode: true,
   images: {
-    domains: ["localhost"],
+    domains: [
+      "localhost",
+      "rychillie-net-git-feat-og-image-rychillie.vercel.app",
+    ],
   },
   i18n: {
     localeDetection: true,
