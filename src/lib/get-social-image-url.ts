@@ -12,7 +12,7 @@ export function getSocialImageUrl(pageId: string) {
       return url.toString();
     }
   } catch (err) {
-    console.warn("error invalid social image url", pageId, err.message);
+    console.warn("error invalid social image url", pageId);
   }
 
   return null;

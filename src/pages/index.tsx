@@ -23,7 +23,7 @@ const Home = ({ posts }: any) => {
   const router = useRouter();
   const { locale } = router;
 
-  const socialImageUrl = getSocialImageUrl("test") || "error";
+  const socialImageUrl = getSocialImageUrl("test") || "other image";
 
   return (
     <LayoutBase locale={locale} hasApresentation>
