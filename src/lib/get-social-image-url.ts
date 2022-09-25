@@ -4,7 +4,7 @@ export function getSocialImageUrl(pageId: string) {
   try {
     const url = new URL(
       `/api/social-image`,
-      `https://rychillie-net.vercel.app`
+      `https://rychillie-net-git-feat-og-image-rychillie.vercel.app/`
     );
 
     if (pageId) {
