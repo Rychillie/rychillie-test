@@ -71,6 +71,42 @@ const BlogBR = defineDocumentType(() => ({
   computedFields,
 }));
 
+const CourseEN = defineDocumentType(() => ({
+  name: "CourseEnUS",
+  filePathPattern: "courses/en-US/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string", required: true },
+    external_url: { type: "string", required: true },
+    course_length: { type: "string", required: true },
+    tags: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
+  },
+  computedFields,
+}));
+
+const CourseBR = defineDocumentType(() => ({
+  name: "CoursePtBR",
+  filePathPattern: "courses/pt-BR/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string", required: true },
+    external_url: { type: "string", required: true },
+    course_length: { type: "string", required: true },
+    tags: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
+  },
+  computedFields,
+}));
+
 const Newsletter = defineDocumentType(() => ({
   name: "Newsletter",
   filePathPattern: "newsletter/*.mdx",
@@ -108,7 +144,15 @@ const OtherPage = defineDocumentType(() => ({
 
 const contentLayerConfig = makeSource({
   contentDirPath: "./content",
-  documentTypes: [BlogEN, BlogBR, Snippet, OtherPage, Newsletter],
+  documentTypes: [
+    BlogEN,
+    BlogBR,
+    Snippet,
+    OtherPage,
+    Newsletter,
+    CourseEN,
+    CourseBR,
+  ],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

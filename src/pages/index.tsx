@@ -1,7 +1,12 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { compareDesc } from "date-fns";
-import { allBlogEnUs, allBlogPtBRs } from "contentlayer/generated";
+import {
+  allBlogEnUs,
+  allBlogPtBRs,
+  allCourseEnUs,
+  allCoursePtBRs,
+} from "contentlayer/generated";
 import SectionList from "@components/SectionList";
 import ItemPost from "@components/ItemPost";
 import { DatePost } from "@lib/utils";
@@ -10,20 +15,25 @@ import { NextSeo } from "next-seo";
 
 export function getStaticProps({ locale }: { locale: string }) {
   const postLang = locale === "pt-BR" ? allBlogPtBRs : allBlogEnUs;
+  const courseLang = locale === "pt-BR" ? allCoursePtBRs : allCourseEnUs;
   const posts = postLang
     .sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date));
     })
     .slice(0, 4);
 
-  return { props: { posts } };
+  const courses = courseLang
+    .sort((a, b) => {
+      return compareDesc(new Date(a.title), new Date(b.title));
+    })
+    .slice(0, 4);
+
+  return { props: { posts, courses } };
 }
 
-const Home = ({ posts }: any) => {
+const Home = ({ posts, courses }: any) => {
   const router = useRouter();
   const { locale } = router;
-
-  // const imageLink = `https://rychillie-net-git-feat-og-image-rychillie.vercel.app/api/og/?title=${post.title}&top=${formattedDate} • ${readingTimeText}`;
 
   return (
     <LayoutBase
@@ -41,6 +51,24 @@ const Home = ({ posts }: any) => {
       locale={locale}
       hasApresentation
     >
+      <SectionList
+        title={locale === "pt-BR" ? "Cursos" : "Learn"}
+        locale={locale === "pt-BR" ? "pt-BR" : "en-US"}
+        link="/learn"
+        isGrid
+      >
+        {courses.map((course: any, index: any) => (
+          <ItemPost
+            key={index}
+            link={course.external_url}
+            locale={locale as string}
+            title={course.title}
+            description={course.description}
+            extra={course.course_length}
+          />
+        ))}
+      </SectionList>
+
       <SectionList
         title={locale === "pt-BR" ? "Artigos" : "Writting"}
         locale={locale === "pt-BR" ? "pt-BR" : "en-US"}
