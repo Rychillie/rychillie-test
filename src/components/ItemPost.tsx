@@ -1,4 +1,5 @@
 import Link from "next/link";
+import cn from "classnames";
 
 type ItemPostProps = {
   slug?: string;
@@ -7,6 +8,7 @@ type ItemPostProps = {
   title: string;
   description: string;
   extra?: string;
+  isGrid?: boolean;
 };
 
 export default function ItemPost({
@@ -14,8 +16,9 @@ export default function ItemPost({
   link,
   locale,
   title,
-  extra,
   description,
+  extra,
+  isGrid,
 }: ItemPostProps) {
   if (slug) {
     return (
@@ -48,7 +51,12 @@ export default function ItemPost({
         <h3 className="text-base font-medium text-neutral-800 dark:text-neutral-100">
           {title}
         </h3>
-        <p className="text-base font-normal text-neutral-500 dark:text-neutral-400">
+        <p
+          className={cn(
+            isGrid && "line-clamp-2",
+            "text-base font-normal text-neutral-500 dark:text-neutral-400"
+          )}
+        >
           {description}
         </p>
         {extra && (

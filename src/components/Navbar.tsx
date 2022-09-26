@@ -162,7 +162,7 @@ function NavItem({ href, text, locale }: any) {
       className={cn(
         isActive
           ? "text-neutral-800 dark:text-neutral-200 hover:text-neutral-900 hover:dark:text-neutral-200"
-          : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 hover:dark:text-neutral-300",
+          : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 hover:dark:text-neutral-300",
         "px-3.5 py-2.5 text-sm hidden md:flex rounded-lg transition-all"
       )}
     >

@@ -65,6 +65,7 @@ const Home = ({ posts, courses }: any) => {
             title={course.title}
             description={course.description}
             extra={course.course_length}
+            isGrid
           />
         ))}
       </SectionList>

@@ -53,7 +53,7 @@ function ErrorMessage({ children }: { children: React.ReactNode }) {
 function LoadingSpinner() {
   return (
     <svg
-      className="animate-spin text-center w-full justify-center h-5 w-5 text-gray-900 dark:text-gray-100"
+      className="animate-spin text-center mx-auto justify-center h-5 w-5 text-gray-900 dark:text-gray-100"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -139,10 +139,10 @@ export default function Newsletter({ locale }: NewsletterProps) {
               type="email"
               autoComplete="email"
               required
-              className="appearance-none border-2 w-full text-base font-semibold bg-white bg-neutral-900 py-3 px-6 border-neutral-100 dark:border-neutral-800 hover:border-neutral-200 hover:dark:border-neutral-700 rounded-lg placeholder:text-color-neutral-500 placeholder:dark:text-color-neutral-400 transition-all focus:outline-0 focus:ring-0 focus:border-neutral-400"
+              className="appearance-none border-2 w-full text-base font-semibold bg-white dark:bg-neutral-900 py-3 px-6 border-neutral-100 dark:border-neutral-800 hover:border-neutral-200 hover:dark:border-neutral-700 rounded-lg placeholder:text-color-neutral-500 placeholder:dark:text-color-neutral-400 transition-all focus:outline-0 focus:ring-0 focus:border-neutral-400"
             />
             <button
-              className="appearance-none border-2 w-full md:w-60 text-base font-bold bg-neutral-800 text-neutral-900 dark:text-neutral-50 py-3 px-6 border-neutral-100 dark:border-neutral-800 hover:border-neutral-200 hover:dark:border-neutral-700 rounded-lg cursor-pointer transition-all"
+              className="appearance-none border-2 w-full md:w-60 text-base font-bold bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-50 py-3 px-6 border-neutral-100 dark:border-neutral-800 hover:border-neutral-200 hover:dark:border-neutral-700 rounded-lg cursor-pointer transition-all"
               type="submit"
             >
               {form.state === Form.Loading ? (

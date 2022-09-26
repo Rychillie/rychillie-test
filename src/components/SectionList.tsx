@@ -25,7 +25,7 @@ export default function SectionList({
 
       <div
         className={cn(
-          isGrid && "md:grid md:grid-cols-2",
+          isGrid && "md:grid md:grid-cols-2 md:gap-6",
           "flex flex-col gap-4"
         )}
       >
