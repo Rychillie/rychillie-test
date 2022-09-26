@@ -34,7 +34,7 @@ export default function LayoutBase({
       <NextSeo
         openGraph={{
           type: "website",
-          url: `https://rychillie-net-git-feat-og-image-rychillie.vercel.app${
+          url: `https://rychillie-net.vercel.app${
             locale === "pt-BR" ? "/pt-BR/" : "/"
           }`,
           locale: locale === "pt-BR" ? "pt_BR" : "en_US",
@@ -42,7 +42,7 @@ export default function LayoutBase({
           description: description,
           images: [
             {
-              url: `https://rychillie-net-git-feat-og-image-rychillie.vercel.app/api/og/?title=${title}&subtitle=${subTitle}`,
+              url: `https://rychillie-net.vercel.app/api/og/?title=${title}&subtitle=${subTitle}`,
               width: 1200,
               height: 630,
               alt: "Og Image Alt",

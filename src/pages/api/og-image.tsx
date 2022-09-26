@@ -63,7 +63,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }}
           >
             <img
-              src="http://rychillie-net-git-feat-og-image-rychillie.vercel.app/rychillie-pencil.jpg"
+              src="http://rychillie-net.vercel.app/rychillie-pencil.jpg"
               alt="Rychillie's avatar"
               width={96}
               height={96}

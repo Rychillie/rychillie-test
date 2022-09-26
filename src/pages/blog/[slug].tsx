@@ -71,8 +71,7 @@ function VideoWithTheme(
 }
 
 export default function BlogPost({ post }: { post: BlogEnUS | BlogPtBR }) {
-  const baseURL =
-    "https://rychillie-net-git-feat-og-image-rychillie.vercel.app";
+  const baseURL = "https://rychillie-net.vercel.app";
   const locale = post?.type === "BlogPtBR" ? "pt-BR" : "en-US";
   const Component = useMDXComponent(post.body.code);
 

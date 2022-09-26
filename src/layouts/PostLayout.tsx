@@ -25,8 +25,7 @@ export default function LayoutBase({
   extra,
   postSlug,
 }: LayoutBaseProps) {
-  const baseURL =
-    "https://rychillie-net-git-feat-og-image-rychillie.vercel.app";
+  const baseURL = "https://rychillie-net.vercel.app";
   const image = thumb
     ? `${baseURL}/${thumb}`
     : `${baseURL}/api/og-image/?title=${title}&top=${extra}&postSlug=${postSlug}`;
