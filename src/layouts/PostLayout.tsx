@@ -1,3 +1,5 @@
+import Head from "next/head";
+import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Navbar from "@components/Navbar";
 import Container from "@components/Container";
@@ -6,19 +8,61 @@ import Footer from "@components/Footer";
 
 type LayoutBaseProps = {
   children: React.ReactNode;
-  locale?: string;
   title: string;
+  description: string;
+  locale?: string;
   thumb?: string;
+  extra?: string;
+  postSlug?: string;
 };
 
 export default function LayoutBase({
   children,
   locale,
   title,
+  description,
   thumb,
+  extra,
+  postSlug,
 }: LayoutBaseProps) {
+  const baseURL = "https://rychillie-net.vercel.app";
+  const image = thumb
+    ? `${baseURL}/${thumb}`
+    : `${baseURL}/api/og-image/?title=${title}&top=${extra}&postSlug=${postSlug}`;
+
   return (
     <>
+      <Head>
+        <meta name="title" content={title} />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={description} />
+      </Head>
+      <NextSeo
+        openGraph={{
+          type: "website",
+          url: `${locale === "pt-BR" ? `${baseURL}/pt-BR/` : `${baseURL}/`}`,
+          locale: locale === "pt-BR" ? "pt_BR" : "en_US",
+          title: title,
+          description: description,
+          images: [
+            {
+              url: image,
+              width: 1200,
+              height: 630,
+              alt: "Og Image Alt",
+              type: "image/pgn",
+            },
+          ],
+          site_name: "Rychillie",
+        }}
+        twitter={{
+          handle: "@rychillie",
+          site: "@rychillie",
+          cardType: "summary_large_image",
+        }}
+      />
+
       <Navbar locale={locale} />
 
       <header>
